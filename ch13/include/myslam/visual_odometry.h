@@ -15,11 +15,11 @@ namespace myslam {
  */
 class VisualOdometry {
    public:
-    EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
-    typedef std::shared_ptr<VisualOdometry> Ptr;
+    EIGEN_MAKE_ALIGNED_OPERATOR_NEW;//是 Eigen 库提供的一个宏，用于在包含 Eigen 类成员的类中正确地定义 operator new
+    typedef std::shared_ptr<VisualOdometry> Ptr;//用Ptr代表一个<VisualOdometry>类的智能指针
 
     /// constructor with config file
-    VisualOdometry(std::string &config_path);
+    VisualOdometry(std::string &config_path);//声明VisualOdometry函数
 
     /**
      * do initialization things before run
@@ -30,15 +30,18 @@ class VisualOdometry {
     /**
      * start vo in the dataset
      */
-    void Run();
+    void Run();//启动 VisualOdometry的接口函数声明
 
     /**
      * Make a step forward in dataset
      */
     bool Step();
 
-    /// 获取前端状态
-    FrontendStatus GetFrontendStatus() const { return frontend_->GetStatus(); }
+    /// 定义了一个名为GetFrontendStatus的常量成员函数获取前端状态，函数体内还调用了一个叫GetStatus的函数，他是frontend的成员函数
+    FrontendStatus GetFrontendStatus() const 
+   { 
+      return frontend_->GetStatus(); 
+   }
 
    private:
     bool inited_ = false;
