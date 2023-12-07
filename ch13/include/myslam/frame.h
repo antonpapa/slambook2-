@@ -35,10 +35,10 @@ struct Frame {
     std::vector<std::shared_ptr<Feature>> features_right_;
 
    public:  // data members
-    Frame() {}
+    Frame() {}//无参构造
 
     Frame(long id, double time_stamp, const SE3 &pose, const Mat &left,
-          const Mat &right);
+          const Mat &right);//有参构造
 
     // set and get pose, thread safe
     SE3 Pose() {
